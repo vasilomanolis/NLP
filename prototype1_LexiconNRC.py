@@ -198,6 +198,7 @@ def get_song_emotion(song_index, lyrics):
     surprise = songs_library_of_emotion[song_index][10]
     trust = songs_library_of_emotion[song_index][11]
     unknown = songs_library_of_emotion[song_index][12]
+    print("unknwo words", unknown)
     #print("now i print the number of unknown words", unknown)
 
     emotional_impact_words = positive + negative
@@ -358,8 +359,8 @@ def tag_big_lyrics(file_path):
     return tagged_songs
 
 #moby = 'happy'
-#moby_dick = "cheated my self"
-# print(get_song_emotion('ML1', moby))
+moby = "cheated my self"
+print(get_song_emotion('ML1', moby))
 #print(get_song_emotion('ML2', moby_dick))
 #
 # print(songs_library_of_emotion)
@@ -369,6 +370,6 @@ def tag_big_lyrics(file_path):
 # print(song_lib.T)
 path = '/Users/Vasilis/Desktop/Lennon/lyrics.csv'
 
-tag_big_lyrics(path)
+#tag_big_lyrics(path)
 
 # DISADVNATAGE: Negation dont count i am not happy happy happy
