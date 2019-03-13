@@ -1,7 +1,9 @@
+# A class to create a custom corpus.
+
 import xlrd
 import os
 
-# Make new dir for the corpus.
+# Make three new directories for the corpus: main folder, positive, negative
 corpusdir = '/Users/Vasilis/Desktop/Lennon/lyrics_custom_corpus'
 corpusdir_pos = corpusdir + '/pos'
 corpusdir_neg = corpusdir + '/neg'
@@ -16,8 +18,14 @@ if not os.path.isdir(corpusdir):
     os.mkdir(corpusdir_pos)
     os.mkdir(corpusdir_neg)
 
-neg = xlrd.open_workbook("/Users/Vasilis/Desktop/Lennon/test7neg.xls")
-pos = xlrd.open_workbook("/Users/Vasilis/Desktop/Lennon/test7pos.xls")
+# Provide the paths to the neg and pos Excel files.
+path_neg = "/Users/Vasilis/Desktop/Lennon/test7neg.xls"
+path_pos = "/Users/Vasilis/Desktop/Lennon/test7pos.xls"
+
+# Read negative and positive lyrics from Excel and write them to .txt files
+
+neg = xlrd.open_workbook(path_neg)
+pos = xlrd.open_workbook(path_pos)
 sh_neg = neg.sheet_by_index(0)
 sh_pos = pos.sheet_by_index(0)
 
@@ -38,15 +46,3 @@ for row in sh_pos.get_rows():
     filename = os.path.join(corpusdir_pos, index + "-" + title + ".txt")
     with open(filename, 'w') as f:
         f.write(lyrics)
-
-# solve bug
-
-
-# import os
-# from nltk.corpus.reader.plaintext import PlaintextCorpusReader
-#
-# corpusdir = '/Users/vasilis/Desktop/Lennon/lyrics_custom_corpus'  # Directory of corpus.
-#
-# newcorpus = PlaintextCorpusReader(corpusdir, '.*')
-#
-# print(newcorpus)
